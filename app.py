@@ -10,12 +10,12 @@ festival = st.text_input("Koi festival ya event?")
 
 if st.button("Sales Predict Karo"):
     client = Groq(api_key=st.secrets["GROQ_API_KEY"])
-    
+
     prompt = f"Mere product '{product}' ki sales {month} mein, {festival} ke time pe kitni hogi? MSME ke liye 3 point mein batao."
     
     response = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="llama3-8b-8192"
+        model="llama-3.1-8b-instant"
     )
     
     result = response.choices[0].message.content
